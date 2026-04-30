@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Properties — McCray Investments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --pine: #1f4236;
+    --pine-dark: #152e25;
+    --pine-deep: #0d1f18;
+    --gold: #c9a961;
+    --gold-lt: #e8d4a0;
+    --sand: #f4f0e8;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: rgba(31,66,54,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+  /* ── Header ── */
+  .header {
+    background: var(--pine-deep);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(201,169,97,0.03) 60px, rgba(201,169,97,0.03) 61px);
+    pointer-events: none;
+  }
+  .wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.85;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 7vw, 52px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .header h1 em { color: var(--gold); font-style: italic; }
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+    max-width: 460px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    background: var(--pine);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat {
+    padding: 16px 28px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    flex: 1;
+    min-width: 120px;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-label { font-size: 9px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--gold); line-height: 1; }
+
+  /* ── Body ── */
+  .body-wrap { max-width: 960px; margin: 0 auto; padding: 40px 16px 72px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pine);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Property Grid ── */
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .property-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .property-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,31,24,0.12); }
+
+  .card-head {
+    background: var(--pine-dark);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-location {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .card-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(201,169,97,0.15);
+    color: var(--gold-lt);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .card-badge.hot { background: rgba(201,97,97,0.2); color: #e8a0a0; }
+
+  .card-body { padding: 18px; flex: 1; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--pine-deep);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 2px;
+    background: rgba(31,66,54,0.07);
+    color: var(--pine);
+  }
+  .tag.gold { background: rgba(201,169,97,0.12); color: #8a6d2e; }
+
+  .card-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--pine-deep);
+    line-height: 1;
+  }
+  .card-finance { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.4; }
+  .card-finance strong { color: var(--pine); display: block; font-size: 13px; }
+
+  .card-cta {
+    background: var(--pine-deep);
+    padding: 13px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .property-card:hover .card-cta { background: var(--pine); }
+
+  /* ── Bundle card ── */
+  .bundle-card {
+    background: var(--pine-deep);
+    border: 1px solid var(--pine);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .bundle-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,31,24,0.25); }
+  .bundle-head {
+    background: var(--pine);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bundle-head h2 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .bundle-savings {
+    font-size: 11px;
+    font-weight: 600;
+    color: #a0e8b0;
+    background: rgba(160,232,176,0.1);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .bundle-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .bundle-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .bundle-info h3 em { color: var(--gold); font-style: italic; }
+  .bundle-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .bundle-tag {
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+  }
+  .bundle-pricing { text-align: right; }
+  .bundle-price-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+  .bundle-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .bundle-finance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .bundle-finance-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 8px;
+    text-align: center;
+  }
+  .bfi-term { font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .bfi-amount { font-size: 15px; font-weight: 600; color: #fff; }
+  .bundle-cta {
+    background: var(--gold);
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pine-deep);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .bundle-card:hover .bundle-cta { background: #d4b56e; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 11px;
+    color: rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .bundle-body { grid-template-columns: 1fr; }
+    .bundle-pricing { text-align: left; }
+    .stat { min-width: 100px; padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <span class="wordmark">McCray Investments</span>
+  <h1>Own Land in <em>South Carolina</em></h1>
+  <p class="header-sub">Residential lots available with owner financing — no bank needed. As little as $2,500 down.</p>
+</header>
+
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-label">Properties</div>
+    <div class="stat-value">7</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Min. Down</div>
+    <div class="stat-value">$2,500</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Financing</div>
+    <div class="stat-value">7% Int.</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Bank Needed</div>
+    <div class="stat-value">Never</div>
+  </div>
+</div>
+
+<main class="body-wrap">
+
+  <!-- Bundle -->
+  <div class="section-label">Featured Bundle</div>
+  <a href="/lake-city-bundle" class="bundle-card">
+    <div class="bundle-head">
+      <h2>🏡 Lake City Portfolio — 6 Lots</h2>
+      <span class="bundle-savings">Save $14,500 vs. individual</span>
+
+    </div>
+    <div class="bundle-body">
+      <div class="bundle-info">
+        <h3>Gladys St & Belks Green — <em>.66 Acres</em></h3>
+        <div class="bundle-tags">
+          <span class="bundle-tag">6 contiguous lots</span>
+          <span class="bundle-tag">.66 acres total</span>
+          <span class="bundle-tag">Cleared & graded</span>
+          <span class="bundle-tag">Survey done</span>
+          <span class="bundle-tag">Manufactured homes allowed</span>
+          <span class="bundle-tag">Water & sewer access</span>
+          <span class="bundle-tag">Lake City, SC</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;">Six contiguous residential lots ready to develop. All cleared, graded, and surveyed. Each lot supports a manufactured home — build one or develop the entire .66 acre parcel.</p>
+      </div>
+      <div class="bundle-pricing">
+        <div class="bundle-price-label">Cash Price</div>
+        <div class="bundle-price">$74,900</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">or owner financing from $5,000 down</div>
+        <div class="bundle-finance-grid">
+          <div class="bundle-finance-item">
+            <div class="bfi-term">24 mo</div>
+            <div class="bfi-amount">$3,090</div>
+          </div>
+          <div class="bundle-finance-item">
+            <div class="bfi-term">36 mo</div>
+            <div class="bfi-amount">$2,124</div>
+          </div>
+          <div class="bundle-finance-item">
+            <div class="bfi-term">48 mo</div>
+            <div class="bfi-amount">$1,646</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bundle-cta">Unlock Full Bundle Details →</div>
+  </a>
+
+  <!-- Individual Properties -->
+  <div class="section-label">Individual Properties</div>
+  <div class="property-grid">
+
+    <!-- 805 Walnut St -->
+    <a href="/florence-walnut" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Florence, SC</span>
+        <span class="card-badge hot">Active</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">805 Walnut St — Corner Lot</div>
+        <div class="card-tags">
+          <span class="tag">0.17 acres</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag">Road frontage</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- 304 S Fifth St -->
+    <a href="/florence-fifth" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Florence County, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">304 S Fifth St — Double Wide Opportunity</div>
+        <div class="card-tags">
+          <span class="tag">0.22 acres</span>
+          <span class="tag">Survey done</span>
+          <span class="tag gold">Up to 2 mobile homes</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$19,900</div>
+          <div class="card-finance"><strong>From $533/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- 301 S First St -->
+    <a href="/florence-first" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Florence County, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">301 S First St — Large Lot</div>
+        <div class="card-tags">
+          <span class="tag">0.47 acres</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water access</span>
+          <span class="tag gold">Up to 2 mobile homes</span>
+        </div>
+        <div style="font-size:11px;color:#c47a2a;background:rgba(196,122,42,0.08);border:1px solid rgba(196,122,42,0.2);border-radius:2px;padding:6px 10px;margin-bottom:12px;line-height:1.5;">
+          ⚠️ Flood zone — elevation requirements may apply. Flood insurance may be required.
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$21,000</div>
+          <div class="card-finance"><strong>From $443/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Gladys L63 -->
+    <a href="/lake-city-gladys-l63" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Gladys St — Lot 63</div>
+        <div class="card-tags">
+          <span class="tag">0.11 acres</span>
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Gladys L64 -->
+    <a href="/lake-city-gladys-l64" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Gladys St — Lot 64</div>
+        <div class="card-tags">
+          <span class="tag">0.11 acres</span>
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Gladys L65 -->
+    <a href="/lake-city-gladys-l65" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Gladys St — Lot 65</div>
+        <div class="card-tags">
+          <span class="tag">0.11 acres</span>
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Belks Green L67 -->
+    <a href="/lake-city-belks-l67" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Belks Green — Lot 67</div>
+        <div class="card-tags">
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Belks Green L68 -->
+    <a href="/lake-city-belks-l68" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Belks Green — Lot 68</div>
+        <div class="card-tags">
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+    <!-- Belks Green L77 -->
+    <a href="/lake-city-belks-l77" class="property-card">
+      <div class="card-head">
+        <span class="card-location">Lake City, SC</span>
+        <span class="card-badge">Available</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Belks Green — Lot 77</div>
+        <div class="card-tags">
+          <span class="tag">Cleared & graded</span>
+          <span class="tag">Survey done</span>
+          <span class="tag">Water & sewer</span>
+          <span class="tag gold">Manufactured home allowed</span>
+        </div>
+        <div class="card-price-row">
+          <div class="card-price">$14,900</div>
+          <div class="card-finance"><strong>From $383/mo</strong>$2,500 down · 7% int.</div>
+        </div>
+      </div>
+      <div class="card-cta">Unlock Details →</div>
+    </a>
+
+  </div>
+</main>
+
+<footer class="footer">
+  © McCray Investments · tasha@therealmccray.com · Owner Financing Available on All Properties
+</footer>
+
+</body>
+</html>
