@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Own Land in Lake City, SC — McCray Investments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ffffff;--pine:#1f4236;--pine-dark:#152e25;--pine-deep:#0d1f18;--gold:#c9a961;--gold-lt:#e8d4a0;--sand:#f4f0e8;--text:#1a1a1a;--muted:#6b6b6b;--border:rgba(31,66,54,0.12);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--sand);color:var(--text);-webkit-font-smoothing:antialiased;}
+  .back-link{display:block;background:var(--pine-dark);padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .back-link:hover{background:var(--pine-deep);}
+  .hero{background:var(--pine-deep);padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 60px,rgba(201,169,97,0.03) 60px,rgba(201,169,97,0.03) 61px);pointer-events:none;}
+  .wordmark{font-size:10px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:block;opacity:0.85;}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,7vw,48px);font-weight:300;color:#fff;line-height:1.2;margin-bottom:12px;position:relative;}
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero-sub{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:400px;margin:0 auto;position:relative;}
+  .stats-bar{background:var(--pine);display:flex;justify-content:center;flex-wrap:wrap;}
+  .stat{padding:18px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);flex:1;min-width:100px;}
+  .stat:last-child{border-right:none;}
+  .stat-label{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:5px;}
+  .stat-value{font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:var(--gold);line-height:1;}
+  .body-wrap{max-width:640px;margin:0 auto;padding:0 16px 72px;}
+  .section{background:var(--bg);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:16px;}
+  .section-head{background:var(--pine-dark);padding:13px 22px;}
+  .section-head h2{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+  .section-body{padding:20px 22px;}
+  .bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .bullets li{font-size:14px;color:var(--text);display:flex;align-items:center;gap:9px;}
+  .bullets li::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+  .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .price-card{border:1px solid var(--border);border-radius:3px;padding:18px 16px;text-align:center;}
+  .price-card.dark{background:var(--pine-deep);border-color:var(--pine-deep);}
+  .price-type{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--pine);margin-bottom:8px;}
+  .price-card.dark .price-type{color:var(--gold-lt);}
+  .price-amount{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;color:var(--pine-deep);line-height:1;margin-bottom:5px;}
+  .price-card.dark .price-amount{color:#fff;}
+  .price-sub{font-size:11px;color:var(--muted);line-height:1.5;}
+  .price-card.dark .price-sub{color:rgba(255,255,255,0.45);}
+  .term-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+  .term-item{border:1px solid var(--border);border-radius:3px;padding:10px 8px;text-align:center;}
+  .term-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .term-amount{font-size:16px;font-weight:600;color:var(--pine-deep);}
+  .flood-warning{font-size:11px;color:#c47a2a;background:rgba(196,122,42,0.08);border:1px solid rgba(196,122,42,0.2);border-radius:2px;padding:6px 10px;margin-bottom:12px;line-height:1.5;}
+  .unlock-box{background:var(--pine-deep);border:1px solid var(--pine);border-radius:3px;margin-top:16px;padding:30px 24px;text-align:center;}
+  .lock-ring{width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,169,97,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  .lock-ring svg{width:20px;height:20px;}
+  .unlock-box h2{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.25;}
+  .unlock-box p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:24px;max-width:340px;margin-left:auto;margin-right:auto;}
+  .form-group{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
+  .form-input{width:100%;padding:13px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:3px;color:#fff;font-size:14px;outline:none;transition:border-color 0.2s;}
+  .form-input::placeholder{color:rgba(255,255,255,0.3);}
+  .form-input:focus{border-color:var(--gold);}
+  .form-input.error{border-color:#e05555;}
+  .btn-unlock{width:100%;padding:15px;background:var(--gold);color:var(--pine-deep);border:none;border-radius:3px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .btn-unlock:hover:not(:disabled){background:#d4b56e;}
+  .btn-unlock:disabled{opacity:0.6;cursor:not-allowed;}
+  .privacy-note{margin-top:12px;font-size:11px;color:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;gap:5px;}
+  .error-msg{font-size:12px;color:#e07070;text-align:center;margin-top:10px;display:none;}
+  .spinner{width:16px;height:16px;border:2px solid rgba(13,31,24,0.25);border-top-color:var(--pine-deep);border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .details-section{display:none;margin-top:16px;}
+  .details-section.visible{display:block;animation:fadeUp 0.5s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px;}
+  .detail-row:last-child{border-bottom:none;}
+  .dk{color:var(--muted);}
+  .dv{font-weight:600;color:var(--pine-deep);text-align:right;}
+  .map-block{border-top:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;background:#f9f7f2;}
+  .map-pin-wrap{width:36px;height:36px;background:var(--pine);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .map-pin-wrap svg{width:16px;height:16px;}
+  .map-address{font-size:13px;color:var(--pine-dark);line-height:1.5;}
+  .map-link{font-size:12px;color:var(--gold);text-decoration:none;font-weight:600;margin-top:2px;display:block;}
+  .cta-box{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:26px 22px;text-align:center;margin-top:12px;}
+  .cta-box p{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
+  .btn-cta{display:inline-block;padding:14px 32px;background:var(--pine);color:#fff;font-size:14px;font-weight:600;border:none;border-radius:3px;cursor:pointer;text-decoration:none;transition:background 0.2s;}
+  .btn-cta:hover{background:var(--pine-dark);}
+  .footer{text-align:center;padding:32px 16px;font-size:11px;color:rgba(0,0,0,0.3);letter-spacing:1px;text-transform:uppercase;}
+  @media(max-width:480px){.bullets{grid-template-columns:1fr;}.pricing-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<a href="/" class="back-link">← All Properties</a>
+<header class="hero">
+  <span class="wordmark">McCray Investments</span>
+  <h1>Own Land in <em>Lake City, SC</em></h1>
+  <p class="hero-sub">Cleared, graded &amp; surveyed lot on Gladys St — manufactured home allowed, no bank needed.</p>
+</header>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-label">Cash Price</div><div class="stat-value">$14,900</div></div>
+  <div class="stat"><div class="stat-label">Down Payment</div><div class="stat-value">$2,500</div></div>
+  <div class="stat"><div class="stat-label">Lot Size</div><div class="stat-value">0.11 ac</div></div>
+  <div class="stat"><div class="stat-label">Status</div><div class="stat-value">Ready</div></div>
+</div>
+<main class="body-wrap">
+  <div class="section">
+    <div class="section-head"><h2>Why This Lot</h2></div>
+    <div class="section-body">
+      
+      <ul class="bullets"><li>Cleared &amp; graded</li><li>Survey done ✓</li><li>Water &amp; sewer access</li><li>Manufactured home OK</li><li>Owner financing</li><li>No bank needed</li></ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-head"><h2>Pricing Options</h2></div>
+    <div class="section-body">
+      <div class="pricing-grid">
+        <div class="price-card"><div class="price-type">Cash</div><div class="price-amount">$14,900</div><div class="price-sub">Clear title, close fast</div></div>
+        <div class="price-card dark"><div class="price-type">Owner Financing</div><div class="price-amount">$2,500</div><div class="price-sub">Down + monthly payments<br>No bank · No credit check</div></div>
+      </div>
+      <div class="term-grid">
+        <div class="term-item"><div class="term-label">24 months</div><div class="term-amount">$557/mo</div></div>
+        <div class="term-item"><div class="term-label">36 months</div><div class="term-amount">$383/mo</div></div>
+        <div class="term-item"><div class="term-label">48 months</div><div class="term-amount">$297/mo</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="unlock-box" id="unlock-box">
+    <div class="lock-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+    <h2>Unlock Full Property Details</h2>
+    <p>Enter your info to reveal the exact address, parcel number, and map. I'll also email everything to you.</p>
+    <div class="form-group">
+      <input class="form-input" type="text" id="inp-name" placeholder="Your first name" autocomplete="given-name">
+      <input class="form-input" type="tel" id="inp-phone" placeholder="Phone number" autocomplete="tel">
+      <input class="form-input" type="email" id="inp-email" placeholder="Email address" autocomplete="email">
+    </div>
+    <button class="btn-unlock" id="btn-unlock" onclick="handleUnlock()">
+      <span id="btn-label">Show Me the Property</span>
+      <span class="spinner" id="spinner"></span>
+    </button>
+    <div class="error-msg" id="error-msg">Something went wrong. Please try again or email tasha@therealmccray.com</div>
+    <p class="privacy-note"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your info is never sold or spammed</p>
+  </div>
+  <div class="details-section" id="details-section">
+    <div class="section">
+      <div class="section-head"><h2>Property Details</h2></div>
+      <div class="section-body"><div class="detail-row"><span class="dk">Street</span><span class="dv">Gladys St, Lake City, SC</span></div><div class="detail-row"><span class="dk">Parcel ID</span><span class="dv">80005-06-007</span></div><div class="detail-row"><span class="dk">Location</span><span class="dv">Lake City, SC</span></div><div class="detail-row"><span class="dk">Lot Size</span><span class="dv">0.11 acres</span></div><div class="detail-row"><span class="dk">Cleared &amp; Graded</span><span class="dv">Yes ✓</span></div><div class="detail-row"><span class="dk">Survey</span><span class="dv">Completed ✓</span></div><div class="detail-row"><span class="dk">Utilities</span><span class="dv">Water &amp; Sewer access</span></div><div class="detail-row"><span class="dk">Manufactured Home</span><span class="dv">Allowed ✓</span></div></div>
+      <div class="map-block">
+        <div class="map-pin-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="map-address">Gladys St Lot 65, Lake City, SC</div><a class="map-link" href="https://maps.google.com/?q=Gladys+St+Lake+City+SC" target="_blank" rel="noopener">Open in Google Maps →</a></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <p>Ready to move forward? Reply to the email I just sent you or reach out directly — I'll walk you through every step.</p>
+      <a class="btn-cta" href="mailto:tasha@therealmccray.com?subject=Interest%20in%20Gladys%20St%20Lot%2065%20Lake%20City%20SC">Email Tasha →</a>
+    </div>
+  </div>
+</main>
+<footer class="footer">© McCray Investments · tasha@therealmccray.com</footer>
+<script>
+  const SCRIPT_URL='YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const PROPERTY_ID='lake-city-gladys-l65';
+  async function handleUnlock(){
+    const name=document.getElementById('inp-name').value.trim();
+    const phone=document.getElementById('inp-phone').value.trim();
+    const email=document.getElementById('inp-email').value.trim();
+    let valid=true;
+    ['inp-name','inp-phone','inp-email'].forEach(id=>document.getElementById(id).classList.remove('error'));
+    if(!name){document.getElementById('inp-name').classList.add('error');valid=false;}
+    if(!phone){document.getElementById('inp-phone').classList.add('error');valid=false;}
+    if(!email||!email.includes('@')){document.getElementById('inp-email').classList.add('error');valid=false;}
+    if(!valid)return;
+    const btn=document.getElementById('btn-unlock');
+    const label=document.getElementById('btn-label');
+    const spinner=document.getElementById('spinner');
+    btn.disabled=true;label.textContent='Sending…';spinner.style.display='block';
+    document.getElementById('error-msg').style.display='none';
+    try{
+      const res=await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({propertyId:PROPERTY_ID,name,phone,email})});
+      const data=await res.json();
+      if(data.success){
+        label.textContent='✓ Details Unlocked';spinner.style.display='none';
+        btn.style.background='#1f4236';btn.style.color='#c9a961';
+        setTimeout(()=>{const d=document.getElementById('details-section');d.classList.add('visible');d.scrollIntoView({behavior:'smooth',block:'start'});},500);
+      }else{throw new Error(data.error);}
+    }catch(err){
+      btn.disabled=false;label.textContent='Show Me the Property';
+      spinner.style.display='none';document.getElementById('error-msg').style.display='block';
+    }
+  }
+</script>
+</body>
+</html>
