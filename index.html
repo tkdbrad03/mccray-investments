@@ -313,14 +313,77 @@
     .bundle-pricing { text-align: left; }
     .stat { min-width: 100px; padding: 14px 16px; }
   }
+
+  /* ── How It Works ── */
+  .how-section {
+    background: var(--bg);
+    margin: 24px 16px 0;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    max-width: 928px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .how-head {
+    background: var(--pine-dark);
+    padding: 13px 24px;
+  }
+  .how-head h2 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .how-body {
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .how-step {
+    text-align: center;
+    position: relative;
+  }
+  .how-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--pine-deep);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .how-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pine-deep);
+    margin-bottom: 6px;
+  }
+  .how-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 600px) {
+    .how-body { grid-template-columns: 1fr; gap: 20px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="header">
   <span class="wordmark">McCray Investments</span>
-  <h1>Own Land in <em>South Carolina</em></h1>
-  <p class="header-sub">Residential lots available with owner financing — no bank needed. As little as $2,500 down.</p>
+  <h1>Own Land Without <em>a Bank</em></h1>
+  <p class="header-sub">South Carolina land available now — buildable lots with low down payments and flexible monthly options. No credit check. No bank. Ever.</p>
 </header>
 
 <div class="stats-bar">
@@ -342,13 +405,36 @@
   </div>
 </div>
 
+
+  <!-- How It Works -->
+  <div class="how-section">
+    <div class="how-head"><h2>How It Works</h2></div>
+    <div class="how-body">
+      <div class="how-step">
+        <div class="how-number">1</div>
+        <div class="how-title">Choose Your Lot</div>
+        <div class="how-desc">Browse available properties below. Each listing shows size, location, pricing, and financing options.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-number">2</div>
+        <div class="how-title">Pick Cash or Monthly</div>
+        <div class="how-desc">Buy outright or choose owner financing — 24, 36, or 48 months. No bank. No credit check. No surprises.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-number">3</div>
+        <div class="how-title">Secure With a Deposit</div>
+        <div class="how-desc">Reply to Tasha directly. Submit your down payment and we handle everything remotely — fast and simple.</div>
+      </div>
+    </div>
+  </div>
+
 <main class="body-wrap">
 
   <!-- Bundle -->
   <div class="section-label">Featured Bundle</div>
   <a href="/lake-city-bundle" class="bundle-card">
     <div class="bundle-head">
-      <h2>🏡 Lake City Portfolio — 6 Lots</h2>
+      <h2>Lake City Portfolio — 6 Lots</h2>
       <span class="bundle-savings">Save $14,500 vs. individual</span>
 
     </div>
