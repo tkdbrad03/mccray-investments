@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — McCray Investments</title>
+<link rel="icon" type="image/png" href="/mccray-investments-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --pine: #1f4236;
+    --pine-dark: #152e25;
+    --pine-deep: #0d1f18;
+    --gold: #c9a961;
+    --gold-lt: #e8d4a0;
+    --sand: #f4f0e8;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: rgba(31,66,54,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+  /* ── Back link ── */
+  .back-link {
+    display: block;
+    background: var(--pine-dark);
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .back-link:hover { background: var(--pine-deep); }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--pine-deep);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(201,169,97,0.03) 60px, rgba(201,169,97,0.03) 61px);
+    pointer-events: none;
+  }
+  .hero img {
+    height: 60px;
+    width: auto;
+    display: block;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 6vw, 46px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+    max-width: 440px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Body ── */
+  .body-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 16px 80px;
+  }
+
+  /* ── Category label ── */
+  .cat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pine);
+    margin: 40px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-label:first-child { margin-top: 0; }
+
+  /* ── FAQ Item ── */
+  .faq-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .faq-item:hover { box-shadow: 0 4px 16px rgba(13,31,24,0.08); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 20px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--pine-deep);
+    line-height: 1.4;
+    transition: background 0.15s;
+  }
+  .faq-q:hover { background: rgba(31,66,54,0.03); }
+  .faq-item.open .faq-q { background: var(--pine-dark); color: #fff; }
+
+  .faq-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--pine);
+    transition: all 0.2s;
+    line-height: 1;
+  }
+  .faq-item.open .faq-icon {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--pine-deep);
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    display: none;
+    padding: 0 20px 18px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  .faq-a p { margin-bottom: 10px; }
+  .faq-a p:last-child { margin-bottom: 0; }
+  .faq-a strong { color: var(--pine-deep); font-weight: 600; }
+  .faq-a ul { padding-left: 20px; margin: 8px 0; }
+  .faq-a ul li { margin-bottom: 6px; }
+
+  .faq-a .highlight {
+    background: rgba(31,66,54,0.05);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 3px 3px 0;
+    margin: 12px 0;
+    font-size: 13px;
+    color: var(--pine-deep);
+  }
+
+  /* ── CTA box ── */
+  .cta-box {
+    background: var(--pine-deep);
+    border-radius: 3px;
+    padding: 32px 28px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .cta-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .cta-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .btn-cta {
+    display: inline-block;
+    padding: 13px 32px;
+    background: var(--gold);
+    color: var(--pine-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-cta:hover { background: #d4b56e; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 11px;
+    color: rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">← View All Properties</a>
+
+<header class="hero">
+  <img src="/mccray-investments-logo.png" alt="McCray Investments">
+  <h1>Frequently Asked <em>Questions</em></h1>
+  <p class="hero-sub">Everything you need to know about buying land with McCray Investments. No bank required.</p>
+</header>
+
+<main class="body-wrap">
+
+  <!-- GETTING STARTED -->
+  <div class="cat-label">Getting Started</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is this land still available?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes! All properties listed on <strong>mccrayinvestments.com</strong> are currently available unless marked as sold. To get the full details on any lot — including the address, parcel number, and map — simply fill out the short form on the property page and everything will be sent to you instantly.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is this legit? Who is McCray Investments?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>McCray Investments, LLC is a real estate investment company operated by Tasha McCray. We purchase land at tax lien sales and offer it directly to buyers with owner financing — cutting out the bank entirely.</p>
+      <p>Every property has a verified parcel ID, county record, and clear title. You can verify any parcel yourself using the Florence County or Lake City GIS system.</p>
+      <p>Questions? Email directly: <strong>tasha@therealmccray.com</strong></p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How do I get started?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Three simple steps:</p>
+      <ul>
+        <li>Browse the available properties at <strong>mccrayinvestments.com</strong></li>
+        <li>Click on the property you're interested in and fill out the short form to unlock the full details</li>
+        <li>Reply to the email you receive or contact Tasha directly to choose your payment option and get started</li>
+      </ul>
+      <div class="highlight">No bank. No credit check. No complicated process. Just pick your lot and let's move.</div>
+    </div>
+  </div>
+
+  <!-- FINANCING -->
+  <div class="cat-label">Financing & Payments</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Do I need a bank or credit check?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p><strong>No bank. No credit check. Period.</strong> McCray Investments finances the land directly — we are the bank. Your payment history with us is what matters, not your credit score.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How does owner financing work?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Owner financing means you make payments directly to McCray Investments instead of a bank. Here's how it works:</p>
+      <ul>
+        <li>You put down a down payment to secure the lot</li>
+        <li>You make monthly payments over your chosen term (24, 36, or 48 months)</li>
+        <li>Once all payments are complete, the deed transfers to you and you own the land free and clear</li>
+      </ul>
+      <div class="highlight">You are building equity from day one. The land is yours as long as you keep your payments current.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What is the down payment and interest rate?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Most properties require a <strong>$2,500 down payment</strong> to get started (the Lake City bundle requires $5,000 down). The interest rate on all owner-financed properties is <strong>7% per year</strong>.</p>
+      <p>You choose your term — 24, 36, or 48 months — and your monthly payment is fixed for the life of the contract.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What are the monthly payments?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Monthly payments depend on which property you choose and which term you select. Here's a quick overview:</p>
+      <ul>
+        <li><strong>$14,900 properties</strong> (Walnut St, Lake City lots) — from $297/mo (48 mo) to $557/mo (24 mo)</li>
+        <li><strong>$19,900 properties</strong> (304 S Fifth St) — from $413/mo (48 mo) to $775/mo (24 mo)</li>
+        <li><strong>$21,000 properties</strong> (301 S First St) — from $443/mo (48 mo) to $831/mo (24 mo)</li>
+        <li><strong>$74,900 bundle</strong> (Lake City 6 lots) — from $1,646/mo (48 mo) to $3,090/mo (24 mo)</li>
+      </ul>
+      <p>All payments are at 7% interest. View exact payment options on each property's detail page.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I pay cash instead?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Absolutely. Cash buyers get a clear title quickly and there are no interest charges. Cash pricing is listed on every property page. Contact Tasha to get the process started — cash deals close fast.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      When are payments due? Is there a grace period?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Payments are due on the <strong>1st of each month</strong>. There is a <strong>10-day grace period</strong> — meaning if your payment is received by the 10th, no late fee is charged.</p>
+      <div class="highlight">Tip: Set up a recurring payment or reminder so you never miss. Communication goes a long way — if you're ever in a tough spot, reach out to Tasha before your payment is late.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What happens if I miss a payment?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Here is our full missed payment policy:</p>
+      <ul>
+        <li><strong>Days 1–10:</strong> Grace period — no fee, no action</li>
+        <li><strong>After day 10:</strong> A <strong>$35 late fee</strong> is added to your balance</li>
+        <li><strong>After 2 consecutive missed payments:</strong> The account enters default and a formal default notice is sent</li>
+        <li><strong>30-day cure period:</strong> You have 30 days from the default notice to bring your account current (pay all missed payments + late fees)</li>
+        <li><strong>If not cured:</strong> The contract is terminated and the property reverts to McCray Investments. All payments made are forfeited per the land contract agreement</li>
+      </ul>
+      <div class="highlight">Life happens. If you're struggling, contact Tasha immediately. We'd rather work something out than go through default.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I pay off early?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes — there is <strong>no prepayment penalty</strong>. You can pay off your balance at any time and receive your deed immediately upon final payment. Many buyers choose to pay extra each month to pay off faster and save on interest.</p>
+    </div>
+  </div>
+
+  <!-- THE PROPERTY -->
+  <div class="cat-label">The Property</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I see the property before buying?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes — the exact address and a Google Maps link are revealed when you fill out the form on the property page. You are welcome to drive by and view the lot at any time. McCray Investments operates remotely, so in-person meetings are not available, but everything you need to evaluate the property is provided.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I build a house on the land?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>It depends on the specific lot and local zoning. Here's a quick breakdown:</p>
+      <ul>
+        <li><strong>805 Walnut St (Florence)</strong> — Zoned NC 6.2 Residential. Single family home build is an option.</li>
+        <li><strong>304 S Fifth St (Florence County)</strong> — Unzoned. Flexible use including mobile homes.</li>
+        <li><strong>301 S First St (Florence County)</strong> — Unzoned. Mobile homes allowed. Flood zone — elevation requirements apply.</li>
+        <li><strong>Lake City lots (Gladys & Belks)</strong> — Unzoned. Manufactured/mobile homes allowed on all lots.</li>
+      </ul>
+      <p>We recommend contacting the local building department to confirm what is allowed before purchasing.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I put a manufactured or mobile home on the lot?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p><strong>Yes</strong> — manufactured and mobile homes are allowed on most of our properties. Specifically:</p>
+      <ul>
+        <li>All Lake City lots (Gladys & Belks) — manufactured home allowed</li>
+        <li>304 S Fifth St — up to 2 mobile homes</li>
+        <li>301 S First St — up to 2 mobile homes (flood zone elevation requirements apply)</li>
+      </ul>
+      <div class="highlight">This is one of the most affordable ways to put a home on land you own. No apartment. No landlord. Your land, your home.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Are utilities available?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes — most properties have public utilities available at or near the street. This means you are not starting from scratch:</p>
+      <ul>
+        <li><strong>805 Walnut St</strong> — Public water, sewer, and electric available at the street</li>
+        <li><strong>Lake City lots</strong> — Public water and sewer access available</li>
+        <li><strong>304 S Fifth St</strong> — Check property detail page for current utility status</li>
+        <li><strong>301 S First St</strong> — Water access available</li>
+      </ul>
+      <p>"Available at the street" means the infrastructure runs along the road — a contractor connects from the street to your structure. This is standard and significantly less expensive than rural lots with no utility access.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Has a survey been done on the property?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p><strong>Yes</strong> — surveys have been completed on all currently listed properties. The parcel boundaries are established and documented with the county. The parcel ID for each property is provided on the detail page so you can verify it yourself through the county assessor's website.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What about the 301 S First St flood zone?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>301 S First St is located in a designated flood zone. This means:</p>
+      <ul>
+        <li>Any structure built on the property must meet elevation requirements set by local code</li>
+        <li>Flood insurance will likely be required if you finance a structure through a lender</li>
+        <li>The lot itself is still buildable — the elevation requirement is manageable with proper site prep</li>
+      </ul>
+      <p>We disclose this upfront because it affects construction costs. At $21,000 with owner financing available, it is still priced to reflect this. Contact Tasha with any specific questions about this lot.</p>
+    </div>
+  </div>
+
+  <!-- OWNERSHIP -->
+  <div class="cat-label">Ownership & Title</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      When do I get the deed?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>The deed transfers to you once your final payment is made and your balance is paid in full. At that point you own the land outright — free and clear with no liens.</p>
+      <p>During the payment period, you have possession and use of the land under a land contract / contract for deed agreement.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is the title clear? Are there any liens?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes — all properties are offered with clear title. Land is acquired through the tax lien sale process which clears prior liens as part of the acquisition. If you have specific concerns, we recommend a title search through a local SC title company — typically $150–$300.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What taxes will I owe on the land?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Property taxes in Florence County and Lake City are relatively low on vacant residential land. The county land value assessments for our properties and taxes are calculated based on assessed value.</p>
+      <p>Once you close and own the property, annual property taxes are your responsibility. We recommend checking with the Florence County or Lake City tax assessor for the current tax amount on any specific parcel.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Do you have more properties available?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes — we have multiple properties available right now across Florence and Lake City, South Carolina, including individual lots and a 6-lot bundle in Lake City. View everything at <strong>mccrayinvestments.com</strong>.</p>
+      <p>New properties are added regularly as we acquire them through tax lien sales. To be notified when new lots become available, email <strong>tasha@therealmccray.com</strong> with the subject line "Notify Me."</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Still have a question?</h2>
+    <p>Email Tasha directly and she'll get back to you personally. No bots, no runaround.</p>
+    <a class="btn-cta" href="mailto:tasha@therealmccray.com?subject=Question%20About%20McCray%20Investments">Email Tasha →</a>
+  </div>
+
+</main>
+
+<footer class="footer">© McCray Investments · tasha@therealmccray.com</footer>
+
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
